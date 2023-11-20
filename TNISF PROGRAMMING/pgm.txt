@@ -1,0 +1,48 @@
+interface RemoteControl {
+    void powerOn();
+
+    void powerOff();
+
+    void volumeUp();
+
+    void volumeDown();
+}
+
+class TV implements RemoteControl {
+    private boolean isOn;
+    private int volume;
+
+    public void powerOn() {
+        isOn = true;
+        System.out.println("TV is ON");
+    }
+
+    public void powerOff() {
+        isOn = false;
+        System.out.println("TV is OFF");
+    }
+
+    public void volumeUp() {
+        if (isOn) {
+            volume++;
+            System.out.println("Volume up: " + volume);
+        }
+    }
+
+    public void volumeDown() {
+        if (isOn && volume > 0) {
+            volume--;
+            System.out.println("Volume down: " + volume);
+        }
+    }
+}
+
+public class RemoteControlExample {
+    public static void main(String[] args) {
+        TV tv = new TV();
+        tv.powerOn();
+        tv.volumeUp();
+        tv.volumeDown();
+        tv.powerOff();
+    }
+}
